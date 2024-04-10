@@ -1,0 +1,43 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Requuest Product{% endblock title %}
+{% block main-content %}
+
+{% if messages%}
+  {%for message in messages%}
+  <p {%if message.tags %} class="alert alert-{{message.tags}} mb-5" {%endif%}> {{message}}}</p>
+  {%endfor%}
+  {%endif%}
+
+  <div class="container">
+    <div class="row my-3">
+     <div class="col-sm-6 offset-sm-3">
+      <h3>Request Product</h3>
+      <hr>
+      <form action="" method="post" novalidate class="shadow p-5">
+  {% csrf_token%}
+
+  <div class="col-sm-10">
+    <div class="card">
+      
+    {{form.as_table}}
+    </div>
+  </div>
+    <tr>
+      <td colspan="2">
+        <input type = "submit" value= "Submit" class="btn btn-primary">
+   <br>
+   <div class = "text-center text-primary fw-bold"> <small> Available Products? <a href = "{%url 'home'%}" class="text-secondary"> Home </a> </small>
+      </td>
+    </tr>
+    
+    
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+      
+{% endblock main-content %}

@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Buy Now{% endblock title %} {% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <a href="{% url 'apple' %}" class="list-group-item list-group-item-action active" aria-current="true">
+        Accessories
+      </a>
+                <a href="{% url 'accdata' 'Rapoon'%}" class="list-group-item list-group-item-action">Rapoon</a>
+                <a href="{% url 'accdata' 'Transcend'%}" class="list-group-item list-group-item-action">Transcend</a>
+                <a href="{% url 'accdata' 'below'%}" class="list-group-item list-group-item-action">Below $.50</a>
+                <a href="{% url 'accdata' 'above'%}" class="list-group-item list-group-item-action">Above $.50</a>
+
+
+            </div>
+        </div>
+        <div class="col-sm-8 offset-sm-1">
+            <div class="row">
+            
+                {%for product in acc%}
+                <div class="col-sm-6 text-center mb-4">
+                    <a href="{%url 'product-detail' product.id %}" class="btn">
+                        <div class="item">
+                            <img src="{{product.product_image.url}}" alt="" height="300" class="">
+                            <div class="fw-bold"> {{product.title}} </div>
+                            <div class="f2-bold"> $. {{product.price}}</div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
